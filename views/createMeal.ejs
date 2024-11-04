@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Create a Meal</title>
+</head>
+<body>
+    <h1>Share Your Meal</h1>
+    <form action="/user/create-meal" method="POST">
+        <label>Meal Title:</label>
+        <input type="text" name="title" required>
+        
+        <label>Image URL:</label>
+        <input type="text" name="imageUrl">
+        
+        <label>Description:</label>
+        <textarea name="description" required></textarea>
+        
+        <button type="submit">Share Meal</button>
+    </form>
+</body>
+</html>

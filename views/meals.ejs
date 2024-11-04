@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Meals</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>MEAL APP</h1>
+        <nav>
+          
+            <a href="/user/create-meal">Share Your Meal</a>
+            <a href="/auth/login">Login</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Latest meals</h1>
+        <div class="meal-list">
+            <% meals.forEach(meal => { %>
+                <div class="meal">
+                    <img src="<%= meal.image.startsWith('http') ? meal.image : '/images/' + meal.image %>" alt="<%= meal.title %>">
+                    <h2><%= meal.title %></h2>
+                    <p><%= meal.description %></p>
+                    <button>View Details</button>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <footer>
+        Meal App © 2023
+    </footer>
+</body>
+</html>
