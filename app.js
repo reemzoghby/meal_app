@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'reem3102004@',
+  password: 'najjar.1992',
   database: 'meal_app',
   port: 3306
 });
@@ -63,7 +63,6 @@ console.log("Password:", process.env.DATABASE_PASSWORD);
 console.log("Database:", process.env.DATABASE_NAME);
 
 
-// Render meal creation page, check if authenticated
 app.get('/user/create-meal', (req, res) => {
     if (!isAuthenticated) {
         return res.redirect('/auth/login');
@@ -73,13 +72,27 @@ app.get('/user/create-meal', (req, res) => {
 
 // Handle new meal creation - inserts meal into the Meals table
 app.post('/user/create-meal', (req, res) => {
-    const { meal_name, image_path, description } = req.body;
+    const { meal_name, image_path, calories, description } = req.body;
+    console.log(req.body)
     const user_id = 1; // Placeholder for user ID; should ideally come from session or auth token
-    db.query('INSERT INTO Meals (user_id, meal_name, calories, image_path) VALUES (?, ?, ?, ?)', 
-        [user_id, meal_name, description, image_path || 'default.jpeg'], (err, result) => {
+    db.query('INSERT INTO Meals (user_id, meal_name, calories, image_path, description) VALUES (?, ?, ?, ?, ?)',
+        [user_id, meal_name, Number(calories), image_path, description], (err, result) => {
         if (err) throw err;
         res.redirect('/');
     });
+});
+
+app.get('/auth/register', (req, res) => {
+    res.render('createUser');
+});
+
+app.post('/auth/register', (req, res) => {
+    const { email, password, first_name, last_name } = req.body;
+    db.query('INSERT INTO users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)',
+      [email, password, first_name, last_name ], (err, result) => {
+          if (err) throw err;
+          res.redirect('/auth/login');
+      });
 });
 
 const PORT = process.env.PORT || 3001;

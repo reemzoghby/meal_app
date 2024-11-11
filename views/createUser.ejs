@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Create a Meal</title>
+</head>
+<body>
+    <h1>Create User</h1>
+    <form action="/auth/register" method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>password:</label>
+        <input type="password" name="password" required>
+        
+        <label>First Name:</label>
+        <input type="text" name="first_name" required>
+        
+        <label>Last Name:</label>
+        <textarea name="last_name" required></textarea>
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
