@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-
     <title>Create a Meal</title>
 </head>
 <body>
     <h1>Share Your Meal</h1>
     <form action="/user/create-meal" method="POST">
-        <label>Meal Title:</label>
-        <input type="text" name="title" required>
+        <label>Meal Name:</label>
+        <input type="text" name="meal_name" required>
+        
+        <label>Calories:</label>
+        <input type="number" name="calories" required>
         
         <label>Image URL:</label>
-        <input type="text" name="imageUrl">
+        <input type="text" name="image_path">
         
         <label>Description:</label>
         <textarea name="description" required></textarea>

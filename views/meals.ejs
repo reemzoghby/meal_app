@@ -10,18 +10,18 @@
     <header class="navbar">
         <h1>MEAL APP</h1>
         <nav>
-          
             <a href="/user/create-meal">Share Your Meal</a>
             <a href="/auth/login">Login</a>
         </nav>
     </header>
     <div class="container">
-        <h1>Latest meals</h1>
+        <h1>Latest Meals</h1>
         <div class="meal-list">
             <% meals.forEach(meal => { %>
                 <div class="meal">
-                    <img src="<%= meal.image.startsWith('http') ? meal.image : '/images/' + meal.image %>" alt="<%= meal.title %>">
-                    <h2><%= meal.title %></h2>
+                    <img src="<%= meal.image_path.startsWith('http') ? meal.image_path : '/images/' + meal.image_path %>" alt="<%= meal.meal_name %>">
+                    <h2><%= meal.meal_name %></h2>
+                    <p>Calories: <%= meal.calories %></p>
                     <p><%= meal.description %></p>
                     <button>View Details</button>
                 </div>
